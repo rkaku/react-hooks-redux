@@ -19,4 +19,16 @@
 
 .App-link {
   color: #09d3ac;
+  text-decoration: none;
+}
+
+.ul-style {
+  display: flex;
+}
+
+.li-style {
+  list-style-type: none;
+  width: 200px;
+  padding: 5px;
+  border: 1px solid gray;
 }
