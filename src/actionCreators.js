@@ -11,3 +11,7 @@ export const withdraw = () => {
 export const loan = () => {
   return { type: types.APPLY };
 };
+
+// export const depositeAsync = () => {
+//   return { type: types.DEPOSIT_ASYNC }
+// };

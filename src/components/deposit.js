@@ -1,23 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import AppContext from '../contexts/AppContext';
 import { deposit } from '../actionCreators';
 
 
-function Deposit() {
-  const { state, dispatch } = useContext(AppContext);
-
-  function onDepositHandle() {
-    dispatch(deposit());
-  };
-
+function Component(props) {
   return (
     <>
-      <h1>Balance: { state.balance }</h1>
-      <button onClick={ onDepositHandle }>Deposit</button>
-      <h1>{ state.loan ? "Loan Applied :)" : "Loan Needed :(" }</h1>
+      <h1>Balance: { props.balance }</h1>
+      <button onClick={ props.onDepositHandle }>Deposit</button>
+      <h1>{ props.loanState }</h1>
     </>
   );
 };
 
 
-export default Deposit;
+function Container() {
+  const { state, dispatch } = useContext(AppContext);
+  const onDepositHandle = () => {
+    setTimeout(() => {
+      dispatch(deposit());
+    }, 500);
+  };
+  const balance = useMemo(() => state.balance, [state]);
+  const loanState = state.loan ? "Loan Applied :)" : "Loan Needed :(";
+  return (
+    <Component
+      balance={ balance }
+      onDepositHandle={ onDepositHandle }
+      loanState={ loanState }
+    />
+  );
+}
+
+
+export default Container;
