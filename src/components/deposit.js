@@ -1,14 +1,14 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import AppContext from '../contexts/AppContext';
-import { deposit } from '../actionCreators';
+import { depositCreator, loadingCreator } from '../actionCreators';
 
 
 function Component(props) {
   return (
     <>
-      <h1>Balance: { props.balance }</h1>
+      <h1>{ props.balanceLabelHandle }</h1>
       <button onClick={ props.onDepositHandle }>Deposit</button>
-      <h1>{ props.loanState }</h1>
+      <h1>{ props.loanLabel }</h1>
     </>
   );
 };
@@ -16,18 +16,22 @@ function Component(props) {
 
 function Container() {
   const { state, dispatch } = useContext(AppContext);
-  const onDepositHandle = () => {
+  const { balance, loan, loading } = state;
+  const onDepositHandle = useCallback(() => {
+    dispatch(loadingCreator());
     setTimeout(() => {
-      dispatch(deposit());
-    }, 500);
-  };
-  const balance = useMemo(() => state.balance, [state]);
-  const loanState = state.loan ? "Loan Applied :)" : "Loan Needed :(";
+      dispatch(depositCreator());
+    }, 1000);
+  }, [dispatch]);
+  const balanceLabelHandle = useMemo(() => {
+    return loading ? "Saving..." : `Balance: ${ balance }`
+  }, [loading, balance]);
+  const loanLabel = useMemo(() => loan ? "Loan Applied :)" : "Loan Needed :(", [loan]);
   return (
     <Component
-      balance={ balance }
+      balanceLabelHandle={ balanceLabelHandle }
       onDepositHandle={ onDepositHandle }
-      loanState={ loanState }
+      loanLabel={ loanLabel }
     />
   );
 }
