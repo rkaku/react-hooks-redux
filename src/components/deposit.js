@@ -3,12 +3,12 @@ import AppContext from '../contexts/AppContext';
 import { depositCreator, loadingCreator } from '../actionCreators';
 
 
-function Component(props) {
+function Component({ balanceLabelHandle, onDepositHandle, loanLabel }) {
   return (
     <>
-      <h1>{ props.balanceLabelHandle }</h1>
-      <button onClick={ props.onDepositHandle }>Deposit</button>
-      <h1>{ props.loanLabel }</h1>
+      <h1>{ balanceLabelHandle }</h1>
+      <button onClick={ onDepositHandle }>Deposit</button>
+      <h1>{ loanLabel }</h1>
     </>
   );
 };

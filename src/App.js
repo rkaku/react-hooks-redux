@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import './App.css';
+import './App.scss';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware } from 'redux';
