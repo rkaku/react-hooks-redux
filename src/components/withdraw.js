@@ -3,12 +3,12 @@ import AppContext from '../contexts/AppContext';
 import { withdrawCreator } from '../actionCreators';
 
 
-function Component(props) {
+function Component({ balanceLabel, onWithdrawHandle, loanLabel }) {
   return (
     <>
-      <h1>Balance: { props.balanceLabel }</h1>
-      <button onClick={ props.onWithdrawHandle }>Withdraw</button>
-      <h1>{ props.loanLabel }</h1>
+      <h1>Balance: { balanceLabel }</h1>
+      <button onClick={ onWithdrawHandle }>Withdraw</button>
+      <h1>{ loanLabel }</h1>
     </>
   );
 };

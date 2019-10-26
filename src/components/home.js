@@ -3,15 +3,15 @@ import AppContext from '../contexts/AppContext';
 import { loanCreator } from '../actionCreators';
 
 
-function Component(props) {
+function Component({ balanceLabel, applyLoanHandle, loanButton, loanLabel }) {
   return (
     <>
-      <h1>Balance: { props.balanceLabel }</h1>
+      <h1>Balance: { balanceLabel }</h1>
       <button
         className="button-style"
-        onClick={ props.applyLoanHandle }
-      >{ props.loanButton }</button>
-      <h1>{ props.loanLabel }</h1>
+        onClick={ applyLoanHandle }
+      >{ loanButton }</button>
+      <h1>{ loanLabel }</h1>
     </>
   );
 };
