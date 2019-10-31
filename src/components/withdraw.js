@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from "react"
-import AppContext from "./../reducers"
-import { withdrawCreator } from "../actionCreators"
+// import AppContext from "./../reducers"
+import { withdrawCreator } from "./../store/creators/savings"
 import { useSelector, useDispatch } from "react-redux"
 
 function Withdraw(props) {
@@ -14,8 +14,8 @@ function Withdraw(props) {
 }
 
 export default function Container() {
-  const balance = useSelector(state => state.balance)
-  const loan = useSelector(state => state.loan)
+  const balance = useSelector(state => state.savings.balance)
+  const loan = useSelector(state => state.debts.loan)
   const dispatch = useDispatch()
   // const { state, dispatch } = useContext(AppContext)
   // const { balance, loan } = state

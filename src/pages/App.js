@@ -1,13 +1,14 @@
 import React, { useReducer } from "react"
-import "./App.css"
+import "./../css/App.css"
 import { BrowserRouter, Route, NavLink } from "react-router-dom"
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
-import Home from "./components/home"
-import Deposit from "./components/deposit"
-import Withdraw from "./components/withdraw"
-import { AppContext, reducer, initialState } from "./reducers"
+import Home from "./../components/home"
+import Deposit from "./../components/deposit"
+import Withdraw from "./../components/withdraw"
+import reducer from "./../store/reducers/index"
+// import { AppContext, reducer, initialState } from "./reducers"
 
 function App() {
   return (
@@ -55,14 +56,14 @@ function App() {
 
 export default function Container() {
   const store = createStore(reducer)
-  const [state, dispatch] = useReducer(reducer, initialState())
+  // const [state, dispatch] = useReducer(reducer, initialState())
   return (
     <BrowserRouter>
-      <AppContext.Provider value={ { state, dispatch } }>
-        <Provider store={ store }>
-          <App />
-        </Provider>
-      </AppContext.Provider>
+      {/* <AppContext.Provider value={ { state, dispatch } }> */ }
+      <Provider store={ store }>
+        <App />
+      </Provider>
+      {/* </AppContext.Provider> */ }
     </BrowserRouter>
   )
 }
