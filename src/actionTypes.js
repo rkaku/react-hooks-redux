@@ -1,3 +1,8 @@
-export const DEPOSIT = 'DEPOSIT';
-export const WITHDRAW = 'WITHDRAW';
-export const APPLY = 'APPLY';
+const types = {
+  DEPOSIT: 'DEPOSIT',
+  WITHDRAW: 'WITHDRAW',
+  APPLY: 'APPLY',
+  LOADING: 'LOADING'
+}
+
+export default types

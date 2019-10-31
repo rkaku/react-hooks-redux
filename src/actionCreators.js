@@ -1,13 +1,17 @@
-import * as types from './actionTypes';
+import types from './actionTypes'
 
-export const deposit = () => {
-  return { type: types.DEPOSIT };
-};
-
-export const withdraw = () => {
-  return { type: types.WITHDRAW };
+export const depositCreator = (payload) => {
+  return { type: types.DEPOSIT, payload }
 }
 
-export const loan = () => {
-  return { type: types.APPLY };
-};
+export const withdrawCreator = (payload) => {
+  return { type: types.WITHDRAW, payload }
+}
+
+export const loanCreator = () => {
+  return { type: types.APPLY }
+}
+
+export const loadingCreator = () => {
+  return { type: types.LOADING }
+}
