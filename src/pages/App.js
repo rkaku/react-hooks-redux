@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React from "react"
 import "./../css/App.css"
 import { BrowserRouter, Route, NavLink } from "react-router-dom"
 import { Provider } from "react-redux"
@@ -8,7 +8,6 @@ import Home from "./home"
 import Deposit from "./deposit"
 import Withdraw from "./withdraw"
 import reducer from "./../store/reducers/index"
-// import { AppContext, reducer, initialState } from "./reducers"
 
 function App() {
   return (
@@ -56,14 +55,12 @@ function App() {
 
 export default function Container() {
   const store = createStore(reducer)
-  // const [state, dispatch] = useReducer(reducer, initialState())
+
   return (
-    <BrowserRouter>
-      {/* <AppContext.Provider value={ { state, dispatch } }> */ }
-      <Provider store={ store }>
+    <Provider store={ store }>
+      <BrowserRouter>
         <App />
-      </Provider>
-      {/* </AppContext.Provider> */ }
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   )
 }
