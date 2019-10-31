@@ -1,13 +1,18 @@
 import React, { useCallback, useContext, useMemo } from "react"
 // import AppContext from "./../reducers"
-import { depositCreator, loadingCreator } from "./../store/creators/savings"
+import { depositCreator, loadingCreator } from "../store/creators/savings"
 import { useSelector, useDispatch } from "react-redux"
+import Button from './../components/Button'
 
 function Deposit(props) {
   return (
     <>
       <h1>{ props.balanceLabelHandle }</h1>
-      <button onClick={ props.onDepositHandle }>Deposit</button>
+      {/* <button onClick={ props.onDepositHandle }>Deposit</button> */}
+      <Button
+        onClickHandle={ props.onDepositHandle }
+        buttonLabel={"Deposit"}
+      />
       <h1>{ props.loanLabel }</h1>
     </>
   )

@@ -1,13 +1,18 @@
 import React, { useCallback, useContext, useMemo } from "react"
 // import AppContext from "./../reducers"
-import { withdrawCreator } from "./../store/creators/savings"
+import { withdrawCreator } from "../store/creators/savings"
 import { useSelector, useDispatch } from "react-redux"
+import Button from './../components/Button'
 
 function Withdraw(props) {
   return (
     <>
       <h1>Balance: { props.balanceLabel }</h1>
-      <button onClick={ props.onWithdrawHandle }>Withdraw</button>
+      {/* <button onClick={ props.onWithdrawHandle }>Withdraw</button> */ }
+      <Button
+        onClickHandle={ props.onWithdrawHandle }
+        buttonLabel={ "Withdraw" }
+      />
       <h1>{ props.loanLabel }</h1>
     </>
   )
