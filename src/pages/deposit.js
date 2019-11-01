@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo } from "react"
-import { depositCreator, loadingCreator } from "../store/creators/savings"
 import { useSelector, useDispatch } from "react-redux"
+import depositAsync from "../redux/async/savings"
 import Button from './../components/Button'
 
-export default function Container() {
+export default function Container () {
 
-  function Deposit() {
+  function Deposit () {
     return (
       <>
         <h1>{ balanceLabelHandle }</h1>
@@ -18,22 +18,19 @@ export default function Container() {
     )
   }
 
-  const balance = useSelector(state => state.savings.balance)
-  const loan = useSelector(state => state.debts.loan)
-  const loading = useSelector(state => state.savings.loading)
+  const balance = useSelector( state => state.savings.balance )
+  const loan = useSelector( state => state.debts.loan )
+  const loading = useSelector( state => state.savings.loading )
   const dispatch = useDispatch()
-  const onDepositHandle = useCallback(() => {
-    dispatch(loadingCreator())
-    setTimeout(() => {
-      dispatch(depositCreator(25))
-    }, 1000)
-  }, [dispatch])
-  const balanceLabelHandle = useMemo(() => {
+  const onDepositHandle = useCallback( () => {
+    dispatch( depositAsync( 25 ) )
+  }, [ dispatch ] )
+  const balanceLabelHandle = useMemo( () => {
     return loading ? "Saving..." : `Balance: ${ balance }`
-  }, [loading, balance])
+  }, [ loading, balance ] )
   const loanLabel = useMemo(
-    () => (loan ? "Loan Applied :)" : "Loan Needed :("),
-    [loan],
+    () => ( loan ? "Loan Applied :)" : "Loan Needed :(" ),
+    [ loan ],
   )
 
   return (

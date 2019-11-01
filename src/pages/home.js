@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo } from "react"
-import { loanCreator } from "../store/creators/debts"
+import { loanCreator } from "../redux/creators/debts"
 import { useSelector, useDispatch } from "react-redux"
 
-export default function Container() {
+export default function Container () {
 
-  function Home() {
+  function Home () {
     return (
       <>
         <h1>Balance: { balanceLabel }</h1>
@@ -19,18 +19,18 @@ export default function Container() {
     )
   }
 
-  const balance = useSelector(state => state.savings.balance)
-  const loan = useSelector(state => state.debts.loan)
+  const balance = useSelector( state => state.savings.balance )
+  const loan = useSelector( state => state.debts.loan )
   const dispatch = useDispatch()
-  const balanceLabel = useMemo(() => balance, [balance])
-  const applyLoanHandle = useCallback(() => dispatch(loanCreator()), [dispatch])
-  const loanButtonLabel = useMemo(() => (loan ? "Loan Applied" : "Apply for Loan"), [
+  const balanceLabel = useMemo( () => balance, [ balance ] )
+  const applyLoanHandle = useCallback( () => dispatch( loanCreator() ), [ dispatch ] )
+  const loanButtonLabel = useMemo( () => ( loan ? "Loan Applied" : "Apply for Loan" ), [
     loan,
-  ])
-  const loanButtonColor = useMemo(() => (loan ? "button-style-applied" : "button-style"), [loan])
+  ] )
+  const loanButtonColor = useMemo( () => ( loan ? "button-style-applied" : "button-style" ), [ loan ] )
   const loanLabel = useMemo(
-    () => (loan ? "Loan Applied :)" : "Loan Needed :("),
-    [loan],
+    () => ( loan ? "Loan Applied :)" : "Loan Needed :(" ),
+    [ loan ],
   )
 
   return (

@@ -1,10 +1,10 @@
 import types from './../types/savings'
 
-export const depositCreator = (payload) => {
+export const depositCreator = ( payload ) => {
   return { type: types.DEPOSIT, payload }
 }
 
-export const withdrawCreator = (payload) => {
+export const withdrawCreator = ( payload ) => {
   return { type: types.WITHDRAW, payload }
 }
 

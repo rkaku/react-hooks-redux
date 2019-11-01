@@ -1,5 +1,5 @@
 import React from "react"
-import "./../css/App.css"
+import "./../styles/App.css"
 import { BrowserRouter, Route, NavLink } from "react-router-dom"
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware } from "redux"
@@ -7,9 +7,9 @@ import thunk from "redux-thunk"
 import Home from "./home"
 import Deposit from "./deposit"
 import Withdraw from "./withdraw"
-import reducer from "./../store/reducers/index"
+import reducer from "../redux/reducers/index"
 
-function App() {
+function App () {
   return (
     <>
       <div className="App">
@@ -53,8 +53,8 @@ function App() {
   )
 }
 
-export default function Container() {
-  const store = createStore(reducer)
+export default function Container () {
+  const store = createStore( reducer, applyMiddleware( thunk ) )
 
   return (
     <Provider store={ store }>
